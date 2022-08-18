@@ -20,7 +20,8 @@ function Ads({ ads }) {
               <a
                 href={ads.companyUrl}
                 class='btn btn-warning'
-                target={'_blank'}>
+                target={'_blank'}
+                rel='noreferrer'>
                 Visit Now
               </a>
             </div>

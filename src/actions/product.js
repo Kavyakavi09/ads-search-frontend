@@ -3,7 +3,9 @@ import axios from 'axios';
 export const getAds = () => async (dispatch) => {
   try {
     dispatch({ type: 'START_LOADING' });
-    const { data } = await axios.get('http://localhost:4020/api/ads');
+    const { data } = await axios.get(
+      'https://ads-corner-app.herokuapp.com/api/ads'
+    );
     dispatch({ type: 'FETCH_ADS', payload: data });
     dispatch({ type: 'END_LOADING' });
   } catch (error) {
@@ -15,7 +17,7 @@ export const getAdsBySearch = (searchQuery) => async (dispatch) => {
   try {
     dispatch({ type: 'START_LOADING' });
     const { data } = await axios.get(
-      `http://localhost:4020/api/ads/search?searchQuery=${searchQuery}`
+      `https://ads-corner-app.herokuapp.com/api/ads/search?searchQuery=${searchQuery}`
     );
     dispatch({ type: 'FETCH_ADS_BY_SEARCH', payload: data });
     dispatch({ type: 'END_LOADING' });
