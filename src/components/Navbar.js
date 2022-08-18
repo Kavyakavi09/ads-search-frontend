@@ -7,8 +7,14 @@ function Navbar() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = () => {
-    dispatch(getAdsBySearch(search));
+    if (search.trim()) {
+      dispatch(getAdsBySearch(search));
+      navigate(`/ads/search?searchQuery=${search || 'none'}`);
+    } else {
+      navigate('/');
+    }
   };
 
   return (

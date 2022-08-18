@@ -4,8 +4,10 @@ import { getAds } from '../actions/product';
 import { useSelector } from 'react-redux/es/exports';
 import Navbar from '../components/Navbar';
 import Ads from '../components/Ads';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAds());
@@ -18,7 +20,16 @@ function Home() {
   }
 
   if (!AdsDetails.length) {
-    return <div className='text-center fs-4 fw-bold mt-5'>No Data Found</div>;
+    return (
+      <>
+        <div className='text-center fs-4 fw-bold mt-5'>No Data Found</div>
+        <div className='text-center mt-5'>
+          <button className=' btn btn-primary' onClick={() => navigate('/')}>
+            Go Back
+          </button>
+        </div>
+      </>
+    );
   }
 
   return (
